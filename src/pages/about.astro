@@ -1,0 +1,42 @@
+---
+import { TextSection } from '../core';
+import Layout from '../layouts/Page.astro';
+import HeroSection from '../components/sections/heros/HeroSection.astro';
+
+const seo = {
+	title: 'A propos | Morgane Le Goff',
+	description: 'A propos',
+};
+---
+
+<Layout {seo}>
+	<HeroSection>
+		<div slot="text-container">
+			<h1>A propos de moi</h1>
+			<p>
+				Je m’appelle Morgane, étudiante en cinquième année à Sup de Pub Paris en
+				master Art Direction & Creative Makers.
+			</p>
+		</div>
+		<picture slot="image-container">
+			<img
+				src="/assets/images/avatar.gif"
+				alt="Avatar de Morgane"
+				id="home-hero-image"
+			/>
+		</picture>
+	</HeroSection>
+	<TextSection narrow>
+		<p>
+			Attirée depuis toute jeune par la poésie, le théâtre d’improvisation, j’ai
+			toujours été créative, imaginative et j’aime jouer avec les mots. Au
+			début, je suis entrée en première année à sup de pub dans l’objectif de
+			devenir conceptrice rédactrice. Au cours de ma troisième année, un déclic
+			s’est opéré et mon envie de devenir directrice artistique s’est éveillée,
+			confortée par mon stage de DA. Passionnée et déterminée, les possibilités
+			infinies de la suite adobe intensifient ma soif d’apprendre. À ce jour,
+			j’utilise notamment photoshop, illustrator, premier pro, after effect,
+			animate, indesign et ligthroom.
+		</p>
+	</TextSection>
+</Layout>

@@ -1,0 +1,74 @@
+---
+import { Container } from '../core';
+import { Icon } from 'astro-icon';
+import ContactForm from '../components/forms/ContactForm.astro';
+import Layout from '../layouts/Page.astro';
+
+const seo = {
+	title: 'Contact | Morgane Le Goff',
+	description: 'Contact Page',
+};
+---
+
+<Layout {seo}>
+	<Container>
+		<section class="contact-hero__section">
+			<div class="contact-hero__text-section">
+				<h1>Contactez-moi</h1>
+				<p>
+					Rejoins-moi sur LinkedIn si mon profil t'intéresse
+				</p>
+				<div>
+          <a
+            href="https://www.linkedin.com/in/morgane-le-goff-da/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="socials__link"
+            title={`Ouvrir mon profil LinkedIn`}
+          >
+            <Icon
+              name="mdi:linkedin"
+              width="48px"
+              height="48px"
+						/>
+          </a>
+				</div>
+			</div>
+      <div class="col-2__container">
+        <img
+          src="/assets/images/avatar.gif"
+          alt="Avatar de Morgane"
+          id="home-hero-image"
+        />
+      </div>
+		</section>
+	</Container>
+</Layout>
+
+<style>
+	.contact-hero__section {
+		margin: var(--section-margin) auto;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		min-height: calc(90vh - var(--navbar-height));
+		gap: 3rem;
+	}
+	.contact-hero__text-section {
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		background-color: var(--theme-surface-1);
+		border-radius: var(--theme-shape-radius);
+	}
+	.col-2__container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	@media (max-width: 768px) {
+		.contact-hero__section {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

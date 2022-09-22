@@ -1,0 +1,29 @@
+---
+import PortfolioWorkPreview from './PortfolioWorkPreview.astro';
+
+const {works} = Astro.props;
+---
+
+<ul class="portfolio-works-list__list">
+  {works?.map((work) => {
+    return (
+      <PortfolioWorkPreview work={work} />
+    )
+  })}
+</ul>
+
+<style>
+.portfolio-works-list__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+@media (max-width: 768px) {
+  .portfolio-works-list__list {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

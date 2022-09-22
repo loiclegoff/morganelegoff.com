@@ -1,0 +1,32 @@
+---
+const {work} = Astro.props;
+---
+
+<li class="portfolio-work__preview">
+  <a href={work.href}>
+    <img height="350" width="623" src={work.featuredImage} />
+    <h3>{work.title}</h3>
+    {work.excerpt && <p>{work.excerpt}</p>}
+  </a>
+</li>
+
+
+<style>
+.portfolio-work__preview img {
+  margin-bottom: 1rem;
+  border-radius: calc(var(--theme-shape-radius) /2);
+  transition: border-radius var(--theme-transition);
+  object-fit: cover;
+}
+.portfolio-work__preview:hover img {
+  border-radius: var(--theme-shape-radius);
+}
+.portfolio-work__preview a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.portfolio-work__preview h3 {
+  margin: 0;
+}
+</style>

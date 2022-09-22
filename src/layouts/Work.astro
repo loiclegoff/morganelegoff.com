@@ -1,0 +1,108 @@
+---
+import { Container } from '../core';
+import Layout from './Page.astro';
+import { generateTagData } from '../utils/helpers';
+
+const {content: {title, description, publishDate, canonicalURL, tags, images, featuredImage, thumbnails} } = Astro.props;
+
+let allTagsData = [];
+
+if(tags && tags.length > 0){
+  allTagsData = generateTagData(tags);
+}
+
+const seo = {
+	title,
+	description,
+  publishDate,
+	canonicalURL,
+	image: featuredImage,
+};
+---
+<Layout seo={seo}>
+  <div class="work-header__container">
+    <ul class="work-tags__list">
+      {allTagsData.map(tag => (
+        <li class="work-tags__tag">
+          <a href={`/portfolio/tags/${tag.slug}`}>
+            {tag.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <h1>{title}</h1>
+    <p class="work-layout__date">
+      <time><em>{publishDate}</em></time>
+    </p>
+  </div>
+  <Container narrow>
+    <article id="article">
+        <slot></slot>
+    </article>
+  </Container>
+  {images && images.length > 0 ?
+    <div class="work-layout__container">
+      <Container narrow>
+      {
+        images.map(image => <img class="work-layout__img" src={image} alt={title} />)
+      }
+      {
+        thumbnails && thumbnails.length > 0 ?
+        <div class="work-layout__thumbnails">
+          {
+            thumbnails.map(thumbnail => <img src={thumbnail} alt={title} />)
+          }
+        </div>
+        : null
+      }
+      </Container>
+    </div>
+
+  : null}
+
+</Layout>
+
+<style>
+  #article {
+    padding-bottom: 3rem;
+  }
+  .work-layout__container {
+    padding-bottom: 3rem;
+  }
+  .work-header__container {
+    max-width: var(--theme-blog-post-header-width);
+    margin: 1rem auto;
+    padding: var(--container-padding);
+  }
+  .work-tags__list {
+    margin: 1rem auto;
+    padding: 0;
+    list-style: none;
+  }
+  .work-tags__tag {
+    text-transform: uppercase;
+  }
+  .work-tags__tag a {
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+  }
+  .work-layout__img {
+    margin: 0 auto 1rem auto;
+  }
+  .work-layout__date {
+    margin-bottom: 1rem;
+    opacity: 0.84;
+  }
+  .work-layout__thumbnails {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    grid-auto-columns: 1fr;
+  }
+
+  @media (max-width: 600px) {
+    .work-layout__thumbnails {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
