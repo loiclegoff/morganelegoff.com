@@ -1,10 +1,12 @@
 ---
+import { Image } from '@astrojs/image/components';
+
 const {work} = Astro.props;
 ---
 
 <li class="portfolio-work__preview">
   <a href={work.href}>
-    <img height="350" width="623" src={work.featuredImage} />
+    <Image height="350" width="623" src={work.featuredImage} alt={work.titleÒ} />
     <h3>{work.title}</h3>
     {work.excerpt && <p>{work.excerpt}</p>}
   </a>

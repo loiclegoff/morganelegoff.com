@@ -1,8 +1,6 @@
 ---
-import { Icon } from 'astro-icon';
-import { Container, Button } from '../../../core';
-import settings from '../../../config/settings.js';
-import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
+import { Container } from '../../../core';
+import { Image } from '@astrojs/image/components';
 ---
 
 <Container>
@@ -16,7 +14,9 @@ import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
 		</div>
 		<div class="hero-section__image">
 				<picture>
-					<img
+					<Image
+            height={"498"}
+            aspectRatio="4:3" format="avif"
 						src="/assets/images/home/ploum.jpg"
 						alt="Morgane Le Goff"
 						id="home-hero-image"
